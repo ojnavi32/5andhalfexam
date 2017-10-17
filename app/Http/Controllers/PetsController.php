@@ -64,6 +64,19 @@ class PetsController extends Controller
         return response('Successfully created a Pet record', 200);
     }
 
+    public function uploadImage(Request $request)
+    {
+        $pet = Pet::findOrFail($request->petId);
+        $file = $request->file('file');
+        $filename = $file->getClientOriginalName();
+        $pet->photoUrls = $filename;
+        $pet->save();
+
+        $request->file('file')->move( base_path() . '/public/img/', $filename);
+        
+        return response('Successfully uploaded an image', 200);
+    }
+
     /**
      * Update the specified resource in storage.
      *

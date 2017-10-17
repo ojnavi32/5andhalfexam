@@ -31,15 +31,16 @@ class Kernel extends ConsoleKernel
             
             foreach ($orders as $order) {
                 if (strtotime($order->shipDate) < strtotime('now')) {
-                    $order->status = 'delivered';
-                    $order->save();
-                    
                     $pet = Pet::findOrFail($order->petId);
                     $pet->status = 'available';
                     $pet->save();
+                    
+                    $order->status = 'delivered';
+                    $order->save();
+                    
                 }
             }
-        })->everyMinute();
+        })->hourly();
     }
 
     /**

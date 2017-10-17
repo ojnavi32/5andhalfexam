@@ -17,3 +17,6 @@ You can access your database through [PHPMYADMIN](http://ivanjo-batman5andhalf.c
 ### Framework Documentation
 Documentation for the framework can be found on the
 [Laravel website](http://laravel.com/docs).
+
+## GITHUB REPO URL
+https://github.com/ojnavi32/5andhalfexam

@@ -19,17 +19,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::resource('document', 'Document');
 
-Route::get('/test', function() {
-    $order = \App\Order::find(1);
-    return date('Y-m-d h:i:s a', strtotime($order->shipDate));
-    
-});
-
 #Pet routes
 Route::get('/pet/findByTags', 'PetsController@findByTags');
 Route::get('/pet/{petId}', 'PetsController@findById');
 Route::post('/pet/{petId}', 'PetsController@updateWithId');
 Route::post('/pet', 'PetsController@store');
+Route::post('/pet/{petId}/uploadImage', 'PetsController@uploadImage');
 Route::put('/pet', 'PetsController@update');
 Route::delete('/pet/{petId}', 'PetsController@destroy');
 
